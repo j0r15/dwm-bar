@@ -1,11 +1,8 @@
 #!/bin/sh
 FACE=wlp4s0
 dwm_netusage () {
-while true; do
   RX_WRTIE=$(cat /sys/class/net/$FACE/statistics/rx_bytes > rx) # write buffer for comparison
   TX_WRITE=$(cat /sys/class/net/$FACE/statistics/tx_bytes > tx)
-  sleep 0.1
-done
 RX_READ=$(cat /sys/class/net/$FACE/statistics/rx_bytes) # get current bytes
 TX_READ=$(cat /sys/class/net/$FACE/statistics/tx_bytes)
 TX_FILE=$(cat tx) # access buffer
@@ -30,12 +27,8 @@ fi
 # printf "▲ %s  ▼ %s " "$NETUP" "$NETDOWN"
 # printf "\n"
          printf "%s" "$SEP1"
-        if [ "$IDENTIFIER" = "unicode" ]; then
-            printf "🔒 %s %s" "$NETUP" "$NETDOWN"
-        else
             printf "▲ %s ▼ %s" "$NETUP" "$NETDOWN"
-        fi
-        printf " %s %s\n " "NET USAGE" "$SEP2"
+        printf " %s\n " "$SEP2"
 }
 
 
