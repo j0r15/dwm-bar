@@ -1,8 +1,9 @@
 #!/bin/sh
 FACE=wlp4s0
 dwm_netusage () {
-  RX_WRTIE=$(cat /sys/class/net/$FACE/statistics/rx_bytes > rx) # write buffer for comparison
-  TX_WRITE=$(cat /sys/class/net/$FACE/statistics/tx_bytes > tx)
+RX_WRTIE=$(cat /sys/class/net/$FACE/statistics/rx_bytes > rx) # write buffer for comparison
+TX_WRITE=$(cat /sys/class/net/$FACE/statistics/tx_bytes > tx)
+sleep 0.2
 RX_READ=$(cat /sys/class/net/$FACE/statistics/rx_bytes) # get current bytes
 TX_READ=$(cat /sys/class/net/$FACE/statistics/tx_bytes)
 TX_FILE=$(cat tx) # access buffer
