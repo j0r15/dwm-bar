@@ -35,7 +35,7 @@ else
 	printf "%s %s %s %s %s" "$SEP1" "$ISP" "$COORLAT" "$COORLONG" "$SEP2"
 fi
 
-  # ip kan deze zijn 185.220.70.148 of die uit amsterdam
+sleep 10
 }
 
 
