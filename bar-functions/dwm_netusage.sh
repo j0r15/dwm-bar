@@ -12,15 +12,15 @@ RX_FILE=$(cat rx)
 NETDOWN_raw=$( expr $RX_READ - $RX_FILE)
 NETUP_raw=$( expr $TX_READ - $TX_FILE)
 
-if [[ "${#NETDOWN_raw}" > 3 ]]; then
-  expr $NETDOWN_raw / 1000
+if [[ "${#NETDOWN_raw}" == 3 ]]; then
+  expr $NETDOWN_raw * 2^-10
   NETDOWN="${NETDOWN_raw} kB"
 else
   NETDOWN="${NETDOWN_raw} B"
 fi
 
-if [[ "${#NETUP_raw}" > 3 ]]; then
-  expr $NETUP_raw / 1000
+if [[ "${#NETUP_raw}" == 3 ]]; then
+  expr $NETUP_raw * 2^-10
   NETUP="${NETUP_raw} kB"
 else
   NETUP="${NETUP_raw} B"
@@ -29,7 +29,7 @@ fi
 # printf "\n"
          printf "%s" "$SEP1"
             printf "▲ %s ▼ %s" "$NETUP" "$NETDOWN"
-        printf " %s\n " "$SEP2"
+        printf " %s " "$SEP2"
 }
 
 

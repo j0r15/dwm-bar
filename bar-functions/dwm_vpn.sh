@@ -25,17 +25,15 @@
 
 dwm_vpn () {
 VPN=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=city>).*(?=</city)')
-COOR=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=latitude>).*(?=</latitude)' && curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=longitude>).*(?=</longitude)')
+ISP=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=isp>).*(?=</isp)')
+COORLAT=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=latitude>).*(?=</latitude)')
+COORLONG=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=longitude>).*(?=</longitude)')
 
 if [ "$VPN" != "" ]; then
-         printf "%s" "$SEP1"
-        if [ "$IDENTIFIER" = "unicode" ]; then
-            printf "🔒 %s %s" "$VPN" "$COOR"
-        else
-            printf "VPN %s %s" "$VPN" "$COOR"
-        fi
-        printf " %s %s\n " "NET" "$SEP2"
-    fi
+	printf "%s %s %s %s %s" "$SEP1" "$VPN" "$COORLAT" "$COORLONG" "$SEP2"
+else
+	printf "%s %s %s %s %s" "$SEP1" "$ISP" "$COORLAT" "$COORLONG" "$SEP2"
+fi
 
   # ip kan deze zijn 185.220.70.148 of die uit amsterdam
 }
