@@ -25,12 +25,11 @@
 
 dwm_vpn () {
 
+
 VPN=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=city>).*(?=</city)')
 ISP=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=isp>).*(?=</isp)')
 COORLAT=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=latitude>).*(?=</latitude)')
 COORLONG=$(curl -s http://api.geoiplookup.net/ | grep -oP -m1 '(?<=longitude>).*(?=</longitude)')
-sleep 3
-done
 
 
 if [ "$VPN" != "" ]; then
@@ -39,6 +38,7 @@ else
 	printf "%s %s %s %s %s" "$SEP1" "$ISP" "$COORLAT" "$COORLONG" "$SEP2"
 fi
 
+sleep 3
 }
 
 
