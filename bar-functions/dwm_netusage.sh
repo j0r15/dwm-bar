@@ -1,5 +1,5 @@
 #!/bin/sh
-FACE=wlp4s0
+FACE=wlx503eaad43bf9
 dwm_netusage () {
 RX_WRTIE=$(cat /sys/class/net/$FACE/statistics/rx_bytes > rx) # write buffer for comparison
 TX_WRITE=$(cat /sys/class/net/$FACE/statistics/tx_bytes > tx)
