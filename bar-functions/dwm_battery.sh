@@ -35,8 +35,11 @@ elif [ "$capacity" -ge 25 ]; then
 	color="#ffff00"
 else
 	color="#ff0000"
-	warn="❗"
-	notify-send -u critical "Low battery"
+	warn="LOW"
+fi
+
+if [ "$capacity" -ge 20 | $status = "Discharging"]; then
+	notify-send -u critical "Low battery" ; sleep 10
 fi
 
 [ -z $warn ] && warn=" "
