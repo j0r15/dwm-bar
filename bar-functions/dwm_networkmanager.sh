@@ -5,10 +5,9 @@
 # Dependencies: NetworkManager
 
 dwm_networkmanager () {
-
 # WIFI_STRENGTH_PCM=$(cat /proc/net/wireless | sed -n -e 's/.*wlp4s0[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
 
-WIFI_STRENGTH=$(cat /proc/net/wireless | sed -n -e 's/.*wlx503eaad43bf9[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
+WIFI_STRENGTH=$(cat /proc/net/wireless | sed -n -e 's/.*wlp5s0[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
 # WIFI_STRENGTH_USB=$(cat /proc/net/wireless | sed -n -e 's/.*wlx503eaad43bf9[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
 
 Fruits=('▁' '▂' '▃' '▄' '▅' '▆' '▇' '█')
@@ -22,8 +21,8 @@ CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
       CONNAME="LAN"
     fi
     PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
-
-    printf "%s %s %s %s %s" "$SEP1" "$CONNAME" "$PRIVATE" "$WIFI_BARS" "$SEP2"
+    CONNECTEDTO=$(nmcli -a | grep 'wlp5s0:' | awk '{print $4}')
+    printf "%s %s %s %s %s %s" "$SEP1" "$CONNAME" "$PRIVATE" "$CONNECTEDTO" "$WIFI_BARS" "$SEP2"
 
 }
 
