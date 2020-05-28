@@ -7,8 +7,8 @@
 dwm_networkmanager () {
 # WIFI_STRENGTH_PCM=$(cat /proc/net/wireless | sed -n -e 's/.*wlp4s0[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
 
-WIFI_STRENGTH=$(cat /proc/net/wireless | sed -n -e 's/.*wlp5s0[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
-# WIFI_STRENGTH_USB=$(cat /proc/net/wireless | sed -n -e 's/.*wlx503eaad43bf9[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
+# WIFI_STRENGTH=$(cat /proc/net/wireless | sed -n -e 's/.*wlp5s0[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
+WIFI_STRENGTH=$(cat /proc/net/wireless | sed -n -e 's/.*wlx503eaad43bf9[^0-9]*[0-9]* *\([0-9]*\).*/\1/p')
 
 Fruits=('▁' '▂' '▃' '▄' '▅' '▆' '▇' '█')
 number=$(expr $WIFI_STRENGTH / 7 )
