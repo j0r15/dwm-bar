@@ -21,7 +21,7 @@ CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
       CONNAME="LAN"
     fi
     PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
-    CONNECTEDTO=$(nmcli -a | grep 'wlp5s0:' | awk '{print $4}')
+    CONNECTEDTO=$(nmcli -a | grep 'wlx503eaad43bf9:' | awk '{print $4}' || nmcli -a | grep 'wlp5s0:' | awk '{print $4}')
     printf "%s %s %s %s %s %s" "$SEP1" "$CONNAME" "$PRIVATE" "$CONNECTEDTO" "$WIFI_BARS" "$SEP2"
 
 }
